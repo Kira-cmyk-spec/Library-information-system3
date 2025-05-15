@@ -1,0 +1,1135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище libraryModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Author_book">
+          <Key>
+            <PropertyRef Name="id_author_book" />
+          </Key>
+          <Property Name="id_book" Type="int" Nullable="false" />
+          <Property Name="id_worker" Type="int" Nullable="false" />
+          <Property Name="id_library_card" Type="int" Nullable="false" />
+          <Property Name="id_author_book" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="books" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="id_author" Type="int" Nullable="false" />
+          <Property Name="id_date_of_publication" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_role" Type="int" Nullable="false" />
+          <Property Name="id_library_card" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" />
+          <Property Name="Patronymic" Type="varchar" MaxLength="50" />
+          <Property Name="login" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_group" Type="int" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="Date_of_publication">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_of_publication" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Discipline">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="discipline" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group_student">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Library_Card">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_client" Type="int" Nullable="false" />
+          <Property Name="id_author" Type="int" Nullable="false" />
+          <Property Name="id_book" Type="int" Nullable="false" />
+          <Property Name="id_date_of_publication" Type="int" Nullable="false" />
+          <Property Name="id_location" Type="int" Nullable="false" />
+          <Property Name="part_number" Type="int" />
+          <Property Name="date_redister" Type="date" Nullable="false" />
+          <Property Name="date_register_end" Type="date" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="rack" Type="int" Nullable="false" />
+          <Property Name="sthelf" Type="int" Nullable="false" />
+          <Property Name="id_discipline" Type="int" Nullable="false" />
+          <Property Name="id_date_of_publication" Type="int" Nullable="false" />
+          <Property Name="id_book" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Publishing_house">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" />
+          <Property Name="street" Type="nvarchar" MaxLength="50" />
+          <Property Name="home" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Rent">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_worker" Type="int" Nullable="false" />
+          <Property Name="id_library_card" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="role" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Worker">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_role" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" />
+          <Property Name="Patronymic" Type="varchar" MaxLength="50" />
+          <Property Name="Login" Type="varchar(max)" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Book_Author">
+          <End Role="Author" Type="Self.Author" Multiplicity="1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="id_author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_Date_of_publication">
+          <End Role="Date_of_publication" Type="Self.Date_of_publication" Multiplicity="1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Date_of_publication">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="id_date_of_publication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Group_student">
+          <End Role="Group_student" Type="Self.Group_student" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group_student">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="id_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Library_Card">
+          <End Role="Library_Card" Type="Self.Library_Card" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Library_Card">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="id_library_card" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Library_Card_Author">
+          <End Role="Author" Type="Self.Author" Multiplicity="1" />
+          <End Role="Library_Card" Type="Self.Library_Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Library_Card">
+              <PropertyRef Name="id_author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Library_Card_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="Library_Card" Type="Self.Library_Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Library_Card">
+              <PropertyRef Name="id_book" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Library_Card_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Library_Card" Type="Self.Library_Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Library_Card">
+              <PropertyRef Name="id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Library_Card_Date_of_publication">
+          <End Role="Date_of_publication" Type="Self.Date_of_publication" Multiplicity="1" />
+          <End Role="Library_Card" Type="Self.Library_Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Date_of_publication">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Library_Card">
+              <PropertyRef Name="id_date_of_publication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Library_Card_location">
+          <End Role="location" Type="Self.location" Multiplicity="1" />
+          <End Role="Library_Card" Type="Self.Library_Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="location">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Library_Card">
+              <PropertyRef Name="id_location" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_location_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="location" Type="Self.location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="location">
+              <PropertyRef Name="id_book" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_location_Date_of_publication">
+          <End Role="Date_of_publication" Type="Self.Date_of_publication" Multiplicity="1" />
+          <End Role="location" Type="Self.location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Date_of_publication">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="location">
+              <PropertyRef Name="id_date_of_publication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_location_Discipline">
+          <End Role="Discipline" Type="Self.Discipline" Multiplicity="1" />
+          <End Role="location" Type="Self.location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discipline">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="location">
+              <PropertyRef Name="id_discipline" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rent_Library_Card">
+          <End Role="Library_Card" Type="Self.Library_Card" Multiplicity="1" />
+          <End Role="Rent" Type="Self.Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Library_Card">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rent">
+              <PropertyRef Name="id_library_card" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rent_Worker">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="Rent" Type="Self.Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rent">
+              <PropertyRef Name="id_worker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Worker_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Хранилище libraryModelContainer">
+          <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Author_book" EntityType="Self.Author_book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Date_of_publication" EntityType="Self.Date_of_publication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Discipline" EntityType="Self.Discipline" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group_student" EntityType="Self.Group_student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Library_Card" EntityType="Self.Library_Card" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="location" EntityType="Self.location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publishing_house" EntityType="Self.Publishing_house" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rent" EntityType="Self.Rent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Book_Author" Association="Self.FK_Book_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_Date_of_publication" Association="Self.FK_Book_Date_of_publication">
+            <End Role="Date_of_publication" EntitySet="Date_of_publication" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Group_student" Association="Self.FK_Client_Group_student">
+            <End Role="Group_student" EntitySet="Group_student" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Library_Card" Association="Self.FK_Client_Library_Card">
+            <End Role="Library_Card" EntitySet="Library_Card" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Role" Association="Self.FK_Client_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Library_Card_Author" Association="Self.FK_Library_Card_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Library_Card" EntitySet="Library_Card" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Library_Card_Book" Association="Self.FK_Library_Card_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Library_Card" EntitySet="Library_Card" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Library_Card_Client" Association="Self.FK_Library_Card_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Library_Card" EntitySet="Library_Card" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Library_Card_Date_of_publication" Association="Self.FK_Library_Card_Date_of_publication">
+            <End Role="Date_of_publication" EntitySet="Date_of_publication" />
+            <End Role="Library_Card" EntitySet="Library_Card" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Library_Card_location" Association="Self.FK_Library_Card_location">
+            <End Role="location" EntitySet="location" />
+            <End Role="Library_Card" EntitySet="Library_Card" />
+          </AssociationSet>
+          <AssociationSet Name="FK_location_Book" Association="Self.FK_location_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="location" EntitySet="location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_location_Date_of_publication" Association="Self.FK_location_Date_of_publication">
+            <End Role="Date_of_publication" EntitySet="Date_of_publication" />
+            <End Role="location" EntitySet="location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_location_Discipline" Association="Self.FK_location_Discipline">
+            <End Role="Discipline" EntitySet="Discipline" />
+            <End Role="location" EntitySet="location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rent_Library_Card" Association="Self.FK_Rent_Library_Card">
+            <End Role="Library_Card" EntitySet="Library_Card" />
+            <End Role="Rent" EntitySet="Rent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rent_Worker" Association="Self.FK_Rent_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Rent" EntitySet="Rent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Worker_Role" Association="Self.FK_Worker_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Worker" EntitySet="Worker" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="libraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="libraryEntities1" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(libraryModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(libraryModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Author" EntityType="libraryModel.Author" />
+          <EntitySet Name="Author_book" EntityType="libraryModel.Author_book" />
+          <EntitySet Name="Book" EntityType="libraryModel.Book" />
+          <EntitySet Name="Client" EntityType="libraryModel.Client" />
+          <EntitySet Name="Date_of_publication" EntityType="libraryModel.Date_of_publication" />
+          <EntitySet Name="Discipline" EntityType="libraryModel.Discipline" />
+          <EntitySet Name="Group_student" EntityType="libraryModel.Group_student" />
+          <EntitySet Name="Library_Card" EntityType="libraryModel.Library_Card" />
+          <EntitySet Name="location" EntityType="libraryModel.location" />
+          <EntitySet Name="Publishing_house" EntityType="libraryModel.Publishing_house" />
+          <EntitySet Name="Rent" EntityType="libraryModel.Rent" />
+          <EntitySet Name="Role" EntityType="libraryModel.Role" />
+          <EntitySet Name="sysdiagrams" EntityType="libraryModel.sysdiagrams" />
+          <EntitySet Name="Worker" EntityType="libraryModel.Worker" />
+          <AssociationSet Name="FK_Book_Author" Association="libraryModel.FK_Book_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Library_Card_Author" Association="libraryModel.FK_Library_Card_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Library_Card" EntitySet="Library_Card" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_Date_of_publication" Association="libraryModel.FK_Book_Date_of_publication">
+            <End Role="Date_of_publication" EntitySet="Date_of_publication" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Library_Card_Book" Association="libraryModel.FK_Library_Card_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Library_Card" EntitySet="Library_Card" />
+          </AssociationSet>
+          <AssociationSet Name="FK_location_Book" Association="libraryModel.FK_location_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="location" EntitySet="location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Group_student" Association="libraryModel.FK_Client_Group_student">
+            <End Role="Group_student" EntitySet="Group_student" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Library_Card" Association="libraryModel.FK_Client_Library_Card">
+            <End Role="Library_Card" EntitySet="Library_Card" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Role" Association="libraryModel.FK_Client_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Library_Card_Client" Association="libraryModel.FK_Library_Card_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Library_Card" EntitySet="Library_Card" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Library_Card_Date_of_publication" Association="libraryModel.FK_Library_Card_Date_of_publication">
+            <End Role="Date_of_publication" EntitySet="Date_of_publication" />
+            <End Role="Library_Card" EntitySet="Library_Card" />
+          </AssociationSet>
+          <AssociationSet Name="FK_location_Date_of_publication" Association="libraryModel.FK_location_Date_of_publication">
+            <End Role="Date_of_publication" EntitySet="Date_of_publication" />
+            <End Role="location" EntitySet="location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_location_Discipline" Association="libraryModel.FK_location_Discipline">
+            <End Role="Discipline" EntitySet="Discipline" />
+            <End Role="location" EntitySet="location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Library_Card_location" Association="libraryModel.FK_Library_Card_location">
+            <End Role="location" EntitySet="location" />
+            <End Role="Library_Card" EntitySet="Library_Card" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rent_Library_Card" Association="libraryModel.FK_Rent_Library_Card">
+            <End Role="Library_Card" EntitySet="Library_Card" />
+            <End Role="Rent" EntitySet="Rent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rent_Worker" Association="libraryModel.FK_Rent_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Rent" EntitySet="Rent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Worker_Role" Association="libraryModel.FK_Worker_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Worker" EntitySet="Worker" />
+          </AssociationSet>
+          </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Book" Relationship="libraryModel.FK_Book_Author" FromRole="Author" ToRole="Book" />
+          <NavigationProperty Name="Library_Card" Relationship="libraryModel.FK_Library_Card_Author" FromRole="Author" ToRole="Library_Card" />
+        </EntityType>
+        <EntityType Name="Author_book">
+          <Key>
+            <PropertyRef Name="id_author_book" />
+          </Key>
+          <Property Name="id_book" Type="Int32" Nullable="false" />
+          <Property Name="id_worker" Type="Int32" Nullable="false" />
+          <Property Name="id_library_card" Type="Int32" Nullable="false" />
+          <Property Name="id_author_book" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="books" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_author" Type="Int32" Nullable="false" />
+          <Property Name="id_date_of_publication" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Author" Relationship="libraryModel.FK_Book_Author" FromRole="Book" ToRole="Author" />
+          <NavigationProperty Name="Date_of_publication" Relationship="libraryModel.FK_Book_Date_of_publication" FromRole="Book" ToRole="Date_of_publication" />
+          <NavigationProperty Name="Library_Card" Relationship="libraryModel.FK_Library_Card_Book" FromRole="Book" ToRole="Library_Card" />
+          <NavigationProperty Name="location" Relationship="libraryModel.FK_location_Book" FromRole="Book" ToRole="location" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_role" Type="Int32" Nullable="false" />
+          <Property Name="id_library_card" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_group" Type="Int32" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Group_student" Relationship="libraryModel.FK_Client_Group_student" FromRole="Client" ToRole="Group_student" />
+          <NavigationProperty Name="Library_Card" Relationship="libraryModel.FK_Client_Library_Card" FromRole="Client" ToRole="Library_Card" />
+          <NavigationProperty Name="Role" Relationship="libraryModel.FK_Client_Role" FromRole="Client" ToRole="Role" />
+          <NavigationProperty Name="Library_Card1" Relationship="libraryModel.FK_Library_Card_Client" FromRole="Client" ToRole="Library_Card" />
+        </EntityType>
+        <EntityType Name="Date_of_publication">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_of_publication1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Book" Relationship="libraryModel.FK_Book_Date_of_publication" FromRole="Date_of_publication" ToRole="Book" />
+          <NavigationProperty Name="Library_Card" Relationship="libraryModel.FK_Library_Card_Date_of_publication" FromRole="Date_of_publication" ToRole="Library_Card" />
+          <NavigationProperty Name="location" Relationship="libraryModel.FK_location_Date_of_publication" FromRole="Date_of_publication" ToRole="location" />
+        </EntityType>
+        <EntityType Name="Discipline">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="discipline1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="location" Relationship="libraryModel.FK_location_Discipline" FromRole="Discipline" ToRole="location" />
+        </EntityType>
+        <EntityType Name="Group_student">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Client" Relationship="libraryModel.FK_Client_Group_student" FromRole="Group_student" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Library_Card">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_client" Type="Int32" Nullable="false" />
+          <Property Name="id_author" Type="Int32" Nullable="false" />
+          <Property Name="id_book" Type="Int32" Nullable="false" />
+          <Property Name="id_date_of_publication" Type="Int32" Nullable="false" />
+          <Property Name="id_location" Type="Int32" Nullable="false" />
+          <Property Name="part_number" Type="Int32" />
+          <Property Name="date_redister" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="date_register_end" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Author" Relationship="libraryModel.FK_Library_Card_Author" FromRole="Library_Card" ToRole="Author" />
+          <NavigationProperty Name="Book" Relationship="libraryModel.FK_Library_Card_Book" FromRole="Library_Card" ToRole="Book" />
+          <NavigationProperty Name="Client" Relationship="libraryModel.FK_Client_Library_Card" FromRole="Library_Card" ToRole="Client" />
+          <NavigationProperty Name="Client1" Relationship="libraryModel.FK_Library_Card_Client" FromRole="Library_Card" ToRole="Client" />
+          <NavigationProperty Name="Date_of_publication" Relationship="libraryModel.FK_Library_Card_Date_of_publication" FromRole="Library_Card" ToRole="Date_of_publication" />
+          <NavigationProperty Name="location" Relationship="libraryModel.FK_Library_Card_location" FromRole="Library_Card" ToRole="location" />
+          <NavigationProperty Name="Rent" Relationship="libraryModel.FK_Rent_Library_Card" FromRole="Library_Card" ToRole="Rent" />
+        </EntityType>
+        <EntityType Name="location">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="rack" Type="Int32" Nullable="false" />
+          <Property Name="sthelf" Type="Int32" Nullable="false" />
+          <Property Name="id_discipline" Type="Int32" Nullable="false" />
+          <Property Name="id_date_of_publication" Type="Int32" Nullable="false" />
+          <Property Name="id_book" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Book" Relationship="libraryModel.FK_location_Book" FromRole="location" ToRole="Book" />
+          <NavigationProperty Name="Date_of_publication" Relationship="libraryModel.FK_location_Date_of_publication" FromRole="location" ToRole="Date_of_publication" />
+          <NavigationProperty Name="Discipline" Relationship="libraryModel.FK_location_Discipline" FromRole="location" ToRole="Discipline" />
+          <NavigationProperty Name="Library_Card" Relationship="libraryModel.FK_Library_Card_location" FromRole="location" ToRole="Library_Card" />
+        </EntityType>
+        <EntityType Name="Publishing_house">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="home" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Rent">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_worker" Type="Int32" Nullable="false" />
+          <Property Name="id_library_card" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Library_Card" Relationship="libraryModel.FK_Rent_Library_Card" FromRole="Rent" ToRole="Library_Card" />
+          <NavigationProperty Name="Worker" Relationship="libraryModel.FK_Rent_Worker" FromRole="Rent" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="role1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Client" Relationship="libraryModel.FK_Client_Role" FromRole="Role" ToRole="Client" />
+          <NavigationProperty Name="Worker" Relationship="libraryModel.FK_Worker_Role" FromRole="Role" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Worker">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_role" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Rent" Relationship="libraryModel.FK_Rent_Worker" FromRole="Worker" ToRole="Rent" />
+          <NavigationProperty Name="Role" Relationship="libraryModel.FK_Worker_Role" FromRole="Worker" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Book_Author">
+          <End Type="libraryModel.Author" Role="Author" Multiplicity="1" />
+          <End Type="libraryModel.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="id_author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Library_Card_Author">
+          <End Type="libraryModel.Author" Role="Author" Multiplicity="1" />
+          <End Type="libraryModel.Library_Card" Role="Library_Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Library_Card">
+              <PropertyRef Name="id_author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_Date_of_publication">
+          <End Type="libraryModel.Date_of_publication" Role="Date_of_publication" Multiplicity="1" />
+          <End Type="libraryModel.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Date_of_publication">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="id_date_of_publication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Library_Card_Book">
+          <End Type="libraryModel.Book" Role="Book" Multiplicity="1" />
+          <End Type="libraryModel.Library_Card" Role="Library_Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Library_Card">
+              <PropertyRef Name="id_book" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_location_Book">
+          <End Type="libraryModel.Book" Role="Book" Multiplicity="1" />
+          <End Type="libraryModel.location" Role="location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="location">
+              <PropertyRef Name="id_book" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Group_student">
+          <End Type="libraryModel.Group_student" Role="Group_student" Multiplicity="1" />
+          <End Type="libraryModel.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group_student">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="id_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Library_Card">
+          <End Type="libraryModel.Library_Card" Role="Library_Card" Multiplicity="1" />
+          <End Type="libraryModel.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Library_Card">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="id_library_card" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Role">
+          <End Type="libraryModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="libraryModel.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Library_Card_Client">
+          <End Type="libraryModel.Client" Role="Client" Multiplicity="1" />
+          <End Type="libraryModel.Library_Card" Role="Library_Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Library_Card">
+              <PropertyRef Name="id_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Library_Card_Date_of_publication">
+          <End Type="libraryModel.Date_of_publication" Role="Date_of_publication" Multiplicity="1" />
+          <End Type="libraryModel.Library_Card" Role="Library_Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Date_of_publication">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Library_Card">
+              <PropertyRef Name="id_date_of_publication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_location_Date_of_publication">
+          <End Type="libraryModel.Date_of_publication" Role="Date_of_publication" Multiplicity="1" />
+          <End Type="libraryModel.location" Role="location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Date_of_publication">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="location">
+              <PropertyRef Name="id_date_of_publication" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_location_Discipline">
+          <End Type="libraryModel.Discipline" Role="Discipline" Multiplicity="1" />
+          <End Type="libraryModel.location" Role="location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discipline">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="location">
+              <PropertyRef Name="id_discipline" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Library_Card_location">
+          <End Type="libraryModel.location" Role="location" Multiplicity="1" />
+          <End Type="libraryModel.Library_Card" Role="Library_Card" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="location">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Library_Card">
+              <PropertyRef Name="id_location" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rent_Library_Card">
+          <End Type="libraryModel.Library_Card" Role="Library_Card" Multiplicity="1" />
+          <End Type="libraryModel.Rent" Role="Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Library_Card">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rent">
+              <PropertyRef Name="id_library_card" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rent_Worker">
+          <End Type="libraryModel.Worker" Role="Worker" Multiplicity="1" />
+          <End Type="libraryModel.Rent" Role="Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rent">
+              <PropertyRef Name="id_worker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Worker_Role">
+          <End Type="libraryModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="libraryModel.Worker" Role="Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="id_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище libraryModelContainer" CdmEntityContainer="libraryEntities1">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище libraryModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище libraryModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище libraryModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище libraryModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="libraryModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище libraryModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="libraryModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище libraryModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище libraryModel.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Author">
+            <EntityTypeMapping TypeName="libraryModel.Author">
+              <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Author_book">
+            <EntityTypeMapping TypeName="libraryModel.Author_book">
+              <MappingFragment StoreEntitySet="Author_book">
+                <ScalarProperty Name="id_author_book" ColumnName="id_author_book" />
+                <ScalarProperty Name="id_library_card" ColumnName="id_library_card" />
+                <ScalarProperty Name="id_worker" ColumnName="id_worker" />
+                <ScalarProperty Name="id_book" ColumnName="id_book" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Book">
+            <EntityTypeMapping TypeName="libraryModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="id_date_of_publication" ColumnName="id_date_of_publication" />
+                <ScalarProperty Name="id_author" ColumnName="id_author" />
+                <ScalarProperty Name="books" ColumnName="books" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="libraryModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="id_group" ColumnName="id_group" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id_library_card" ColumnName="id_library_card" />
+                <ScalarProperty Name="id_role" ColumnName="id_role" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Date_of_publication">
+            <EntityTypeMapping TypeName="libraryModel.Date_of_publication">
+              <MappingFragment StoreEntitySet="Date_of_publication">
+                <ScalarProperty Name="date_of_publication1" ColumnName="date_of_publication" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Discipline">
+            <EntityTypeMapping TypeName="libraryModel.Discipline">
+              <MappingFragment StoreEntitySet="Discipline">
+                <ScalarProperty Name="discipline1" ColumnName="discipline" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Group_student">
+            <EntityTypeMapping TypeName="libraryModel.Group_student">
+              <MappingFragment StoreEntitySet="Group_student">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Library_Card">
+            <EntityTypeMapping TypeName="libraryModel.Library_Card">
+              <MappingFragment StoreEntitySet="Library_Card">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="date_register_end" ColumnName="date_register_end" />
+                <ScalarProperty Name="date_redister" ColumnName="date_redister" />
+                <ScalarProperty Name="part_number" ColumnName="part_number" />
+                <ScalarProperty Name="id_location" ColumnName="id_location" />
+                <ScalarProperty Name="id_date_of_publication" ColumnName="id_date_of_publication" />
+                <ScalarProperty Name="id_book" ColumnName="id_book" />
+                <ScalarProperty Name="id_author" ColumnName="id_author" />
+                <ScalarProperty Name="id_client" ColumnName="id_client" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="location">
+            <EntityTypeMapping TypeName="libraryModel.location">
+              <MappingFragment StoreEntitySet="location">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_book" ColumnName="id_book" />
+                <ScalarProperty Name="id_date_of_publication" ColumnName="id_date_of_publication" />
+                <ScalarProperty Name="id_discipline" ColumnName="id_discipline" />
+                <ScalarProperty Name="sthelf" ColumnName="sthelf" />
+                <ScalarProperty Name="rack" ColumnName="rack" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publishing_house">
+            <EntityTypeMapping TypeName="libraryModel.Publishing_house">
+              <MappingFragment StoreEntitySet="Publishing_house">
+                <ScalarProperty Name="home" ColumnName="home" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rent">
+            <EntityTypeMapping TypeName="libraryModel.Rent">
+              <MappingFragment StoreEntitySet="Rent">
+                <ScalarProperty Name="id_library_card" ColumnName="id_library_card" />
+                <ScalarProperty Name="id_worker" ColumnName="id_worker" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="libraryModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="role1" ColumnName="role" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="libraryModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Worker">
+            <EntityTypeMapping TypeName="libraryModel.Worker">
+              <MappingFragment StoreEntitySet="Worker">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="id_role" ColumnName="id_role" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
