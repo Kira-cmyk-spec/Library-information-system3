@@ -73,6 +73,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ClassApp\BdConnection.cs" />
+    <Compile Include="ClassApp\Class_Author.cs" />
+    <Compile Include="ClassApp\Class_Book.cs" />
+    <Compile Include="ClassApp\Class_Date_of_publication.cs" />
+    <Compile Include="ClassApp\Class_Discipline.cs" />
+    <Compile Include="ClassApp\Class_location.cs" />
     <Compile Include="ClassApp\Class_User.cs" />
     <Compile Include="ClassApp\Class_Worker.cs" />
     <Compile Include="DataBase\Author.cs">
@@ -142,6 +147,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PageAppWorker\PageAddBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageAppWorker\PageAddClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageAppWorker\PageAddWorker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PageAppWorker\PageEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -182,10 +199,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PageApp\PageForgot_Password.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="PageApp\PageLibraryCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -200,6 +213,15 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PageAppWorker\PageAddBook.xaml.cs">
+      <DependentUpon>PageAddBook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageAppWorker\PageAddClient.xaml.cs">
+      <DependentUpon>PageAddClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageAppWorker\PageAddWorker.xaml.cs">
+      <DependentUpon>PageAddWorker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PageAppWorker\PageEdit.xaml.cs">
       <DependentUpon>PageEdit.xaml</DependentUpon>
     </Compile>
@@ -229,9 +251,6 @@
     </Compile>
     <Compile Include="PageApp\PageAutho.xaml.cs">
       <DependentUpon>PageAutho.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PageApp\PageForgot_Password.xaml.cs">
-      <DependentUpon>PageForgot_Password.xaml</DependentUpon>
     </Compile>
     <Compile Include="PageApp\PageLibraryCard.xaml.cs">
       <DependentUpon>PageLibraryCard.xaml</DependentUpon>
