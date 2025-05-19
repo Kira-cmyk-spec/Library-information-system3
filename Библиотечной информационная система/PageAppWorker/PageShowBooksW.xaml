@@ -56,7 +56,7 @@
    Width="50">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Author.Name}"/>
+                                            <TextBlock Text="{Binding Date_of_publication.date_of_publication}"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -72,7 +72,7 @@
                                     Width="50">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Author.Name}"/>
+                                            <TextBlock Text="{Binding location.sthelf}"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
@@ -80,7 +80,7 @@
 Width="50">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Text="{Binding Author.Name}"/>
+                                            <TextBlock Text="{Binding location.rack}"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
